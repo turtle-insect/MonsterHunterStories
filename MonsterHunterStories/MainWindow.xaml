@@ -1,0 +1,67 @@
+﻿<Window x:Class="MonsterHunterStories.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MonsterHunterStories"
+        mc:Ignorable="d"
+		WindowStartupLocation="CenterScreen"
+		Title="Monster Hunter Stories Nintendo Switch" Height="450" Width="600">
+	<Window.DataContext>
+		<local:ViewModel/>
+	</Window.DataContext>
+	<DockPanel>
+		<Menu DockPanel.Dock="Top">
+			<MenuItem Header="File">
+				<MenuItem Header="Open" Command="{Binding OpenFileCommand}"/>
+				<MenuItem Header="Save" Command="{Binding SaveFileCommand}"/>
+			</MenuItem>
+		</Menu>
+		<TabControl>
+			<TabItem Header="Basic">
+			</TabItem>
+			<TabItem Header="Item">
+				<ListBox ItemsSource="{Binding Items}">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal">
+								<Label Content="Count"/>
+								<TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+								<Label Content="ID"/>
+								<Label Content="{Binding ID}"/>
+							</StackPanel>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</TabItem>
+			<TabItem Header="Monster">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="150"/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+					<ListBox Name="ListBoxMonster" ItemsSource="{Binding Monsters}" DisplayMemberPath="Name"/>
+					<Grid Grid.Column="1">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition Height="11*"/>
+						</Grid.RowDefinitions>
+						<Label Content="Name"/>
+						<TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxMonster, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"/>
+						<Label Grid.Row="1" Content="Lv"/>
+						<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxMonster, Path=SelectedItem.Lv, UpdateSourceTrigger=PropertyChanged}"/>
+						<Label Grid.Row="2" Content="Type"/>
+						<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxMonster, Path=SelectedItem.ID, UpdateSourceTrigger=PropertyChanged}"/>
+					</Grid>
+				</Grid>
+			</TabItem>
+		</TabControl>
+	</DockPanel>
+</Window>

@@ -51,7 +51,10 @@
 							<RowDefinition/>
 							<RowDefinition/>
 							<RowDefinition/>
-							<RowDefinition Height="11*"/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition Height="8*"/>
 						</Grid.RowDefinitions>
 						<Label Content="Name"/>
 						<TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxMonster, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"/>
@@ -59,6 +62,12 @@
 						<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxMonster, Path=SelectedItem.Lv, UpdateSourceTrigger=PropertyChanged}"/>
 						<Label Grid.Row="2" Content="Type"/>
 						<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxMonster, Path=SelectedItem.ID, UpdateSourceTrigger=PropertyChanged}"/>
+						<Label Grid.Row="3" Content="HP+(*3)"/>
+						<TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=ListBoxMonster, Path=SelectedItem.HPPlus, UpdateSourceTrigger=PropertyChanged}"/>
+						<Label Grid.Row="4" Content="Attack+"/>
+						<TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=ListBoxMonster, Path=SelectedItem.AttackPlus, UpdateSourceTrigger=PropertyChanged}"/>
+						<Label Grid.Row="5" Content="Defense+(*2)"/>
+						<TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=ListBoxMonster, Path=SelectedItem.DefensePlus, UpdateSourceTrigger=PropertyChanged}"/>
 					</Grid>
 				</Grid>
 			</TabItem>

@@ -37,17 +37,7 @@ namespace MonsterHunterStories
 		{
 			if (String.IsNullOrEmpty(mFileName) || mBuffer == null) return false;
 
-			using (var input = new MemoryStream(mBuffer))
-			{
-				using (var output = new MemoryStream())
-				{
-					using (var zlib = new System.IO.Compression.ZLibStream(output, System.IO.Compression.CompressionLevel.Fastest))
-					{
-						input.CopyTo(zlib);
-					}
-					System.IO.File.WriteAllBytes(mFileName, output.ToArray());
-				}
-			}
+			System.IO.File.WriteAllBytes(mFileName, mBuffer);
 			return true;
 		}
 

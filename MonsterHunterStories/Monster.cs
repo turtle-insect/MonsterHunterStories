@@ -33,5 +33,23 @@ namespace MonsterHunterStories
 			get => SaveData.Instance().ReadNumber(mAddress + 104, 1);
 			set => Util.WriteNumber(mAddress + 104, 1, 1, 99, value);
 		}
+
+		public uint HPPlus
+		{
+			get => SaveData.Instance().ReadNumber(mAddress + 228, 1);
+			set => SaveData.Instance().WriteNumber(mAddress + 228, 1, value);
+		}
+
+		public uint AttackPlus
+		{
+			get => SaveData.Instance().ReadNumber(mAddress + 229, 1);
+			set => SaveData.Instance().WriteNumber(mAddress + 229, 1, value);
+		}
+
+		public uint DefensePlus
+		{
+			get => SaveData.Instance().ReadNumber(mAddress + 230, 1);
+			set => SaveData.Instance().WriteNumber(mAddress + 230, 1, value);
+		}
 	}
 }

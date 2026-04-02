@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MonsterHunterStories
 {
-	internal class Item
+	internal class Item : INotifyPropertyChanged
 	{
 		private readonly uint mAddress;
 
@@ -23,7 +24,13 @@ namespace MonsterHunterStories
 		public uint Count
 		{
 			get => SaveData.Instance().ReadNumber(mAddress + 2, 2);
-			set => Util.WriteNumber(mAddress, 2, 0, 99, value);
+			set
+			{
+				Util.WriteNumber(mAddress + 2, 2, 0, 999, value);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Count)));
+			}
 		}
+
+		public event PropertyChangedEventHandler? PropertyChanged;
 	}
 }

@@ -14,7 +14,7 @@ namespace MonsterHunterStories
 	{
 		public ICommand OpenFileCommand { get; private set; }
 		public ICommand SaveFileCommand { get; private set; }
-
+		public ICommand MaxAllItemsCommand { get; private set; }
 
 		public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
 		public ObservableCollection<Monster> Monsters { get; set; } = new ObservableCollection<Monster>();
@@ -23,12 +23,13 @@ namespace MonsterHunterStories
 		{
 			OpenFileCommand = new CommandAction(OpenFile);
 			SaveFileCommand = new CommandAction(SaveFile);
+			MaxAllItemsCommand = new CommandAction(MaxAllItems);
 		}
 
 		private void Initialize()
 		{
 			Items.Clear();
-			for (uint index = 0; index < 60; index++)
+			for (uint index = 0; index < 999; index++)
 			{
 				var item = new Item(0x60 + index * 8);
 				if (item.ID == 0) continue;
@@ -37,7 +38,7 @@ namespace MonsterHunterStories
 			}
 
 			Monsters.Clear();
-			for (uint index = 0; index < 5; index++)
+			for (uint index = 0; index < 400; index++)
 			{
 				var monster = new Monster(0x42330 + index * 596);
 				if (monster.ID == 0) continue;
@@ -58,6 +59,14 @@ namespace MonsterHunterStories
 		private void SaveFile(Object? parameter)
 		{
 			SaveData.Instance().Save();
+		}
+
+		private void MaxAllItems(Object? parameter)
+		{
+			foreach (var item in Items)
+			{
+				item.Count = 999;
+			}
 		}
 	}
 }

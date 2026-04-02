@@ -21,18 +21,21 @@
 			<TabItem Header="Basic">
 			</TabItem>
 			<TabItem Header="Item">
-				<ListBox ItemsSource="{Binding Items}">
-					<ListBox.ItemTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<Label Content="Count"/>
-								<TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
-								<Label Content="ID"/>
-								<Label Content="{Binding ID}"/>
-							</StackPanel>
-						</DataTemplate>
-					</ListBox.ItemTemplate>
-				</ListBox>
+				<DockPanel>
+					<Button Content="Maximizar Todos os Itens (999)" Command="{Binding MaxAllItemsCommand}" DockPanel.Dock="Top" Margin="5" Padding="5"/>
+					<ListBox ItemsSource="{Binding Items}">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<Label Content="Count"/>
+									<TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+									<Label Content="ID"/>
+									<Label Content="{Binding ID}"/>
+								</StackPanel>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</DockPanel>
 			</TabItem>
 			<TabItem Header="Monster">
 				<Grid>

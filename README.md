@@ -9,13 +9,13 @@ https://store-jp.nintendo.com/list/software/70010000066339.html
 
 # Execution Requirements
 * Windows OS
-* .NET 8
+* [.NET 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 * SaveDate Backup
 * SaveDate Restore
 
 # Build Environment
 * Windows 10(64bit)
-* Visual Studio 2022
+* Visual Studio 2026
 
 # Step to Edit
 * SaveData Backup
